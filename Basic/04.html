@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 이벤트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button onclick="alert('하이')">Click me</button> <!-- 클릭이벤트 -->
+        <button v-on:click="alert">Click me2</button> <!-- Vue 클릭이벤트 -->
+
+        <br>{{year}}<br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+
+        <br>
+        <form v-on:submit.prevent="submit"> <!-- .prevent은 이벤트 수식어-->
+            <input type="text"><br>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                year : 2024
+            },
+            methods : {
+                alert(){
+                    alert("하이하이");
+                },
+                plus(){
+                    this.year ++;
+                },
+                minus(){
+                    this.year --;
+                },
+                submit(){
+                    alert("제출");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

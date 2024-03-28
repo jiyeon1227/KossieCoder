@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. 데이터 바인딩</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{nextYear("어니언하세요")}}
+        <input  v-bind:type="type" v-bind:value="inputData"> <!-- 바인딩하고싶은 값을 v-bind:value=""로 설정 -->
+        <a :href="link">지여니:></a><!-- 바인딩 축약형 -->
+        <a :href=getLink("jiyeon1227")>지여니;></a>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                persion : {
+                    name : '지여니 :)',
+                    age : 24
+                },
+                inputData : "hello", // 이 값을 input vlaue로 넣어주고싶음 -> 데이터 바인딩
+                type : "text", // type을 number로 데이터 바인딩
+                link : "https://github.com/"
+            },
+            methods : {
+                nextYear : function(greeting){
+                    return greeting+this.persion.name + "는 내년에" + (this.persion.age+1)+"입니다.";
+                },
+                getLink(git){
+                    return this.link + git;
+                },
+            }
+        })
+    </script>
+</body>
+</html>

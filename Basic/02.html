@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. data와 methhods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{persion.name}} {{persion.age}} // persion객체의 name과 age를 사용
+        {{nextYear("어니언하세요")}}
+        {{nextYear2()}}
+    </div>
+    <script>
+        new Vue({
+            el : '#app', // el : html요소에서 Vue객체를 관리할 태그
+            data : { // data : Vue 객체에서 사용하는 데이터
+                persion : { // 두 변수를 오브젝트안에 넣어서 사용가능
+                    name : '지여니 :)',
+                    age : 24
+                }
+            },
+            methods : {
+            // Vue가 로딩될 때. data = this에 매핑됨
+            // data에 있는 변수를 사용하려면 this를 붙여줘야함
+                nextYear : function(greeting){
+                    return greeting + this.persion.name + "는 내년에" + this.persion.age+1+"입니다.";
+                },
+                nextYear2(){ // 함수 축약형 형태
+                    return this.persion.name + "는 내년에" + (this.persion.age+1)+"입니다."; // 수식 계산할 때는 ()사용
+                }
+            }
+        })
+    </script>
+</body>
+</html>

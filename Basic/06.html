@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06. Computed 속성</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="chageMessage">click</button><br>
+        {{ message.split('').reverse().join('') }}<br>
+        {{ reversedMessage }}
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                message : "안녕하세요",
+                message2:"하이"
+            },
+            methods : {
+              chageMessage(){
+                this.message="hello";
+              }
+            },
+            computed:{ // computed를 사용하면 코드의 길이가 짧아지고, 중복제거 효과가 있음
+                       // methods와computed차이점 : computed는 캐싱을 하기때문에 처음 한 번만 계산되고, methods는 캐싱하지 않기 때문에 계속 호출함
+                reversedMessage(){
+                    return  this.message2.split('').reverse().join('') 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07. Watch 속성</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}<br>
+        <!-- 버튼을 눌러서 메세지가 바뀌면 watch가 변경을 감지하고, updated값을 변경함 -->
+        <button @click="chageMessage">click</button><br>
+        {{updated}}
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                message : "안녕하세요",
+                updated : "아니오"
+            },
+            methods : {
+              chageMessage(){
+                this.message="hello";
+              }
+            },
+            computed : { 
+            },
+            watch : { // 감시하고싶은 data를 쓰면됨
+                // 함수처럼 작성
+                message(newVal, oldVal){ // message변수를 감시
+                    console.log(newVal, oldVal);
+                    this.updated = "네"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

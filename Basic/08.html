@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08. 클래스 & 스타일 바인딩</title>
+    <style>
+        .red{
+            color: red;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <div class="red bold">hello</div>
+
+       <div :class="{red: isRed, bold: isBold}">hello</div> <!-- 클래스 바인딩 -->
+       <button @click="update">click</button>
+       
+       <div :style="{color : blue, fontSize : size}">hello2</div> <!-- 스타일 바인딩 -->
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                // 클래스 바인딩 변수
+               isRed : false, // true이면 색이 들어감
+               isBold : false,
+
+               // 스타일 바인딩 변수
+               blue : "blue",
+               size: "30px"
+            },
+            methods : {
+                update(){
+                    this.isRed = !this.isRed;
+                    this.isBold = !this.isBold;
+                }
+            },
+            computed : { 
+
+            },
+            watch : {
+
+            }
+        })
+    </script>
+</body>
+</html>

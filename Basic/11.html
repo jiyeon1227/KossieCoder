@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. 여러개의 Vue 인스턴스 사용하기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}}<br>
+        <button @click="changeText">click</button>
+    </div>
+
+    <div id="app-1">
+        {{name}}<br>
+        <button @click="changeText">click</button>
+    </div>
+    <script>
+        // app 변수에 Vue인스턴스를 담아줌 
+        const app = new Vue({
+            el : '#app',
+            data : {
+                name : "지여니 :)"
+            },
+            methods : {
+                changeText(){
+                    // app1 vue인스턴스 name을 변경
+                    app1.name = "app-1 을 app에서 update";
+                }
+            }
+        })
+
+        const app1 = new Vue({
+            el : '#app-1',
+            data : {
+                name : "지여니 :>"
+            },
+            methods : {
+                changeText(){
+                    app.name = "app을 app-1에서 update";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

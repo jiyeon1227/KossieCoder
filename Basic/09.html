@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09. v-if 와 v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if -->
+        <!-- number가 true 면 div가 렌더링됨 -->
+        <template  v-if="number === 1"><!-- template을 사용하면 여러 div를 한번에 제어 -->
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number === 2">Hi</div>
+       <div v-else>No</div>
+       <button @click="increaseNumber">Increse</button>{{number}}<br>
+
+       <!-- v-show -->
+       <div v-show="show">Yes</div> <!-- show가 true면 렌더링 -->
+       <button @click="toggle">toggle</button>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+              number : 1,
+              show : false
+            },
+            methods : {
+                increaseNumber(){
+                    this.number ++;
+                },
+                toggle(){
+                    this.show = !this.show;
+                }
+            },
+            computed : { 
+
+            },
+            watch : {
+
+            }
+        })
+    </script>
+</body>
+</html>

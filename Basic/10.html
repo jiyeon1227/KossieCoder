@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. v-for 리스트 렌더링</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{people[0].name}} {{people[0].age}}</div>
+        <div>{{people[1].name}} {{people[1].age}}</div>
+        <div>{{people[2].name}} {{people[2].age}}</div>
+        <div>{{people[3].name}} {{people[3].age}}</div>
+        <hr>
+        <!-- v-for를 사용하면 중복제거가되고 코드가 짧아짐 -->
+        <div v-for="persion in people" :key="persion.name"> <!-- key는 유니크할 수 있도록 설정해야함. 단, index는 바뀔 수 있기때문에 사용X-->
+            {{persion.name}} {{persion.age}}
+        </div>
+        <hr>
+        <!-- 두 번째 인자로 index를 넣으면 index도 출력가능 -->
+        <div v-for="(persion, index) in people">
+            {{persion.name}} {{persion.age}} {{index}}
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                people:[
+                    {name : "a", age:20},
+                    {name : "b", age:21},
+                    {name : "c", age:22},
+                    {name : "d", age:23}
+                ]
+            },
+            methods : {
+                
+            },
+            computed : { 
+
+            },
+            watch : {
+
+            }
+        })
+    </script>
+</body>
+</html>

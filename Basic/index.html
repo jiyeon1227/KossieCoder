@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="jiyeon">
+        {{persion.name}}<br>
+        {{persion.age}}<br>
+        {{hi()}}<br>
+        <input v-bind:type="type" :value="boxValue"><br>
+        <button v-on:click="alert()">클릭!</button><br>
+        <input :type="type" v-model="boxValue">{{boxValue}}<br>
+        v-if 부터 복습하기!
+    </div>
+</body>
+    <script>
+        new Vue({
+            el : "#jiyeon",
+            data : {
+                persion : {
+                    name : "지연:)",
+                    age : 25
+                },
+                boxValue : "HI",
+                type : "text"
+            },
+            methods : {
+                hi(){
+                   return this.persion.name+"님은 내년에 "+(this.persion.age+1)+"살 이네요!" 
+                },
+                alert(){
+                    return alert(this.persion.name+"님 안녕하세요!")
+                }
+            }
+        })
+    </script>
+</html>
