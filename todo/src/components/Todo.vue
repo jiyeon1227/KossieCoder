@@ -15,6 +15,7 @@
 
       <button class="btn btn-danger btn-sm" 
         @click="clickDelete">Delete</button>
+        
     </div>
 </template>
 
@@ -28,14 +29,29 @@ export default {
     },
 
     methods : {
+        // actionds 사용 (모듈을 사용하면 앞에 모듈이름을 적어야함)
         toggleCheckbox(e){
-            this.$emit("toggle-Checkbox",{ // 부모 컴포넌트로 값 보내기
-                id :this.todo.id,
-                checked : e.target.checked
-            })
+            this.$store.dispatch("todo/toggleTodo",{id : this.todo.id, checked : e.target.checked})
         },
         clickDelete(){
-            this.$emit("click-delete", this.todo.id);
+            this.$store.dispatch("todo/deleteTodo", this.todo.id);
+        }
+
+        // mutations 사용
+        // toggleCheckbox(e){
+        //     this.$store.commit("TOGGLE_TODO", {id : this.todo.id, checked : e.target.checked})
+        // },
+        // clickDelete(){
+        //     this.$store.commit("DELETE_TODO", this.todo.id);
+        // }
+    },
+    computed : {
+        numberOfCompletedTodo(){
+            // 모듈사용 안했을때
+            // return this.$store.getters.numberOfCompletedTodo;
+
+            // 모듈사용할 때 (todo는 모듈이름)
+            return this.$store.getters["todo/numberOfCompletedTodo"];
         }
     }
 }
